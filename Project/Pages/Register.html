@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="../CSS/Register.css" />
+    <script src="../JS/Register.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sigmar&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main">
+      <h2>Đăng ký tài khoản</h2>
+      <div> 
+        <input
+          id="email"placeholder=" Tên tài khoản"
+        /><br /><br />
+        <input id="password" type="password" placeholder=" Mật khẩu" /><br /><br />
+        <input
+          id="confirmpassword" type="password"
+          placeholder=" Xác nhận mật khẩu"
+        /><br /><br />
+      </div>
+      <div id="result" class="result"></div>
+      <button id="checkButton" onclick="register()">Đăng ký</button>
+      <p>Đã có tài khoản ? <a href="./Login.html">Đăng nhập</a></p>
+      <div id="snackbar">Đăng ký tài khoản thành công</div>
+    </div>
+  </body>
+</html>

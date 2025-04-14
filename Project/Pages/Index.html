@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Chủ</title>
+    <script src="../JS/Index.js" defer></script>
+    <link rel="stylesheet" href="../CSS/Index.css" />
+    <link rel="stylesheet" href="../CSS/Responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="content">
+        <div class="title">📒 Tài Chính Cá Nhân K24_Rikkei</div>
+        <select id="select" onchange="exit()">
+          <option value="">Tài khoản</option>
+          <option value="logout">Đăng Xuất</option>
+        </select>
+        <div id="confirmModal" class="modal" style="display: none">
+          <div class="modal-content">
+            <p class="confirm">Bạn có chắc chắn muốn đăng xuất?</p>
+            <button onclick="confirmLogout()">Có</button>
+            <button onclick="closeModal()">Không</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="container2">
+        <div class="banner" id="banner1">
+          <h3>🎯 Kiểm soát chi tiêu thông minh.</h3>
+        </div>
+        <div class="banner" id="banner2">
+          <h3>🏅Tiết kiệm, chất phác, đều là đức tốt của con người.</h3>
+        </div>
+        <div class="banner" id="banner3">
+          <h3>📒Quản lí chi tiêu hợp lí, hiệu quả cho bản thân.</h3>
+        </div>
+        <div class="banner" id="banner4">
+          <h3>💸Đừng mua thứ hữu ích, hãy mua thứ cần thiết.</h3>
+        </div>
+      </div>
+    </div>
+    <div class="manage">
+      <h2 class="manage1">📊 Quản Lý Tài Chính Cá Nhân</h2>
+    </div>
+    <div class="date">
+      <div class="date1">
+        <label for="month">📅 Chọn tháng: </label>
+        <input
+          class="month"
+          type="month"
+          id="month"
+          name="month"
+          value="2025-04"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="formgroup">
+      <div class="formgroup1">
+        <label>💰 Ngân sách tháng:</label>
+        <input class="money" placeholder="VD: 5000000" />
+        <button class="saveButton" id="saveButton">Lưu</button>
+      </div>
+    </div>
+    <br />
+    <div class="balance">
+      <div class="balance1">
+        <p class="change1">Số tiền còn lại</p>
+        <p class="change">0 VND</p>
+      </div>
+    </div>
+    <br />
+    <div class="category">
+      <div class="category-inner">
+        <h3>💼 Quản lý danh mục (theo tháng)</h3>
+        <div class="add-category">
+          <input
+            id="categoryName"
+            class="category-input"
+            placeholder="Tên danh mục"
+          />
+          <input
+            id="categoryLimit"
+            class="category-input"
+            placeholder="Giới hạn VND"
+          />
+          <button class="add-category-button" onclick="addCategory()">
+            Thêm danh mục
+          </button>
+        </div>
+        <table id="categoryTable" class="transactions"></table>
+      </div>
+    </div>
+    <div id="editForm" class="edit-form">
+      <h3>Sửa danh mục</h3>
+      <input id="editCategoryName" placeholder="Tên danh mục" />
+      <input id="editCategoryLimit" placeholder="Giới hạn VND" />
+      <button class="save-edit-button" onclick="saveEditCategory()">Lưu</button>
+      <button class="cancel-edit-button" onclick="cancelEditCategory()">
+        Hủy
+      </button>
+    </div>
+    <br />
+    <div class="enter">
+      <div class="enter2">
+        <input
+          class="amount"
+          id="transactionAmount"
+          placeholder="Số tiền"
+          type="number"
+        />
+        <select class="spend" id="categorySelect" name="categorySelect">
+          <option value="">Tiền chi tiêu</option>
+        </select>
+        <input
+          class="amount"
+          id="transactionNote"
+          placeholder="Ghi chú"
+          type="text"
+        />
+        <button onclick="addTransaction()">Thêm</button>
+      </div>
+    </div>
+    <br />
+    <div class="transaction">
+      <div class="transaction2">
+        <h3>🧾 Lịch sử giao dịch</h3>
+        <div class="function">
+          <input id="searchInput" placeholder="Tìm nội dung" />
+          <button class="productsearch" onclick="searchTransactions()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button class="arrange" onclick="showSortModal()">
+            Sắp xếp theo giá
+          </button>
+        </div>
+        <div id="sortModal" class="sort-modal">
+          <h4>Chọn kiểu sắp xếp</h4>
+          <button class="sort-option" onclick="sortTransactions('tăng')">
+            Tăng dần
+          </button>
+          <button class="sort-option" onclick="sortTransactions('giảm')">
+            Giảm dần
+          </button>
+          <button class="sort-cancel" onclick="hideSortModal()">Hủy</button>
+        </div>
+        <div id="transactionTable"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+    <br />
+    <div class="notification">
+      <div class="notification2" id="notification">
+        <p>Chưa có cảnh báo</p>
+      </div>
+    </div>
+    <br />
+    <div class="statistacal">
+      <div class="statistacal2">
+        <div class="stat-header">
+          <p>📆 Thống kê chi tiêu các tháng</p>
+          <select id="statusFilter" onchange="filterStatistics()">
+            <option value="all">Tất cả</option>
+            <option value="đạt">Đạt</option>
+            <option value="vượt">Vượt</option>
+          </select>
+        </div>
+        <table id="statisticsTable">
+          <tr>
+            <td>Tháng</td>
+            <td>Chi tiêu</td>
+            <td>Ngân sách</td>
+            <td>Trạng thái</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br />
+    <div class="ThayHai">
+      <p>© 2025 Quản Lý Tài Chính Cá Nhân. by Quốc Hai!</p>
+    </div>
+  </body>
+</html>
